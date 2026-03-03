@@ -13,27 +13,27 @@ const Project = () => {
 const [activeIndex, setActiveIndex] = useState(0);
 const dashboards = [
   { 
-    id: 1, img: "/dashboard/1.jpeg", title: "Fuel Management", metrics: "1.2M Hits", 
+    id: 1, img: "/imama-portfolio-clean/public/dashboard/1.jpeg", title: "Fuel Management", metrics: "1.2M Hits", 
     desc: "Real-time telemetry for petroleum logistics and consumption tracking.",
     tech: ["IOT", "Next.js", "Redis"], status: "Core_Module"
   },
   { 
-    id: 2, img: "/dashboard/2.jpeg", title: "Flood Control", metrics: "Active", 
+    id: 2, img: "/imama-portfolio-clean/public/dashboard/2.jpeg", title: "Flood Control", metrics: "Active", 
     desc: "Predictive hydrosensor analysis and emergency alert dispatching.",
     tech: ["Python", "AWS", "TensorFlow"], status: "Environmental"
   },
   { 
-    id: 3, img: "/dashboard/3.jpeg", title: "People Counter", metrics: "99.9% Acc.", 
+    id: 3, img: "/imama-portfolio-clean/public/dashboard/3.jpeg", title: "People Counter", metrics: "99.9% Acc.", 
     desc: "Computer vision based occupancy monitoring and flow optimization.",
     tech: ["OpenCV", "C++", "MQTT"], status: "Visual_AI"
   },
   { 
-    id: 4, img: "/dashboard/4.jpeg", title: "Energy Grid", metrics: "84% Eff.", 
+    id: 4, img: "/imama-portfolio-clean/public/dashboard/4.jpeg", title: "Energy Grid", metrics: "84% Eff.", 
     desc: "Granular power grid diagnostics and load-balancing automation.",
     tech: ["Rust", "GraphQL", "Timescale"], status: "Utility_Layer"
   },
   { 
-    id: 5, img: "/dashboard/5.jpeg", title: "Water Quality", metrics: "40ms", 
+    id: 5, img: "/imama-portfolio-clean/public/dashboard/5.jpeg", title: "Water Quality", metrics: "40ms", 
     desc: "Ph levels and pressure distribution across municipal nodes.",
     tech: ["Node.js", "InfluxDB", "D3.js"], status: "Fluid_Dynamics"
   },
@@ -60,24 +60,24 @@ const skills = [
   ];
 
  const mobileProjects = [
-  { id: 1, img: "/portfolio/mob1.png", title: "Aromist", tech: "Flutter", desc: "Premium fragrance discovery and e-commerce experience." },
-  { id: 2, img: "/portfolio/mob2.png", title: "Aspire Edge", tech: "Flutter", desc: "Performance tracking for elite athletes and gym enthusiasts." },
-  { id: 3, img: "/portfolio/mob3.png", title: "ECO Cycle", tech: "Flutter", desc: "Smart waste management and sustainable living reward system." },
-  { id: 4, img: "/portfolio/mob4.png", title: "Laptop Harbor", tech: "Flutter", desc: "Direct marketplace for high-end computing hardware." },
-  { id: 5, img: "/portfolio/mob5.png", title: "Trip Budgeter", tech: "Flutter", desc: "Real-time expense tracking for global digital nomads." },
+  { id: 1, img: "/imama-portfolio-clean/public/portfolio/mob1.png", title: "Aromist", tech: "Flutter", desc: "Premium fragrance discovery and e-commerce experience." },
+  { id: 2, img: "/imama-portfolio-clean/public/portfolio/mob2.png", title: "Aspire Edge", tech: "Flutter", desc: "Performance tracking for elite athletes and gym enthusiasts." },
+  { id: 3, img: "/imama-portfolio-clean/public/portfolio/mob3.png", title: "ECO Cycle", tech: "Flutter", desc: "Smart waste management and sustainable living reward system." },
+  { id: 4, img: "/imama-portfolio-clean/public/portfolio/mob4.png", title: "Laptop Harbor", tech: "Flutter", desc: "Direct marketplace for high-end computing hardware." },
+  { id: 5, img: "/imama-portfolio-clean/public/portfolio/mob5.png", title: "Trip Budgeter", tech: "Flutter", desc: "Real-time expense tracking for global digital nomads." },
 ];
   const projects = [
-    { id: 1, img: "/portfolio/1.PNG", title: "Carspot", cat: "Enterprise", tech: "React • .NET" },
-    { id: 2, img: "/portfolio/2.PNG", title: "Covid Guard", cat: "Realtime", tech: "Socket.io • Node" },
-    { id: 3, img: "/portfolio/3.PNG", title: "ECO Cycle", cat: "E-Commerce", tech: "Next.js • Tailwind" },
-    { id: 4, img: "/portfolio/4.PNG", title: "Field Fusion", cat: "Fintech", tech: "Laravel • MySQL" },
-    { id: 5, img: "/portfolio/5.PNG", title: "Glamour", cat: "Social", tech: "MERN Stack" },
-    { id: 5, img: "/portfolio/6.PNG", title: "Kaam Ka Karavan", cat: "Social", tech: "MERN Stack" },
-    { id: 5, img: "/portfolio/7.PNG", title: "Marina Fleet ", cat: "Social", tech: "MERN Stack" },
-    { id: 5, img: "/portfolio/8.PNG", title: "Robo Cycle", cat: "Social", tech: "MERN Stack" },
-    { id: 5, img: "/portfolio/9.PNG", title: "Bakers", cat: "Social", tech: "MERN Stack" },
-    { id: 5, img: "/portfolio/10.PNG", title: "Story Tellers", cat: "Social", tech: "MERN Stack" },
-    { id: 5, img: "/portfolio/11.PNG", title: "Event Planner", cat: "Social", tech: "MERN Stack" },
+    { id: 1, img: "/imama-portfolio-clean/public/portfolio/1.PNG", title: "Carspot", cat: "Enterprise", tech: "React • .NET" },
+    { id: 2, img: "/imama-portfolio-clean/public/portfolio/2.PNG", title: "Covid Guard", cat: "Realtime", tech: "Socket.io • Node" },
+    { id: 3, img: "/imama-portfolio-clean/public/portfolio/3.PNG", title: "ECO Cycle", cat: "E-Commerce", tech: "Next.js • Tailwind" },
+    { id: 4, img: "/imama-portfolio-clean/public/portfolio/4.PNG", title: "Field Fusion", cat: "Fintech", tech: "Laravel • MySQL" },
+    { id: 5, img: "/imama-portfolio-clean/public/portfolio/5.PNG", title: "Glamour", cat: "Social", tech: "MERN Stack" },
+    { id: 5, img: "/imama-portfolio-clean/public/portfolio/6.PNG", title: "Kaam Ka Karavan", cat: "Social", tech: "MERN Stack" },
+    { id: 5, img: "/imama-portfolio-clean/public/portfolio/7.PNG", title: "Marina Fleet ", cat: "Social", tech: "MERN Stack" },
+    { id: 5, img: "/imama-portfolio-clean/public/portfolio/8.PNG", title: "Robo Cycle", cat: "Social", tech: "MERN Stack" },
+    { id: 5, img: "/imama-portfolio-clean/public/portfolio/9.PNG", title: "Bakers", cat: "Social", tech: "MERN Stack" },
+    { id: 5, img: "/imama-portfolio-clean/public/portfolio/10.PNG", title: "Story Tellers", cat: "Social", tech: "MERN Stack" },
+    { id: 5, img: "/imama-portfolio-clean/public/portfolio/11.PNG", title: "Event Planner", cat: "Social", tech: "MERN Stack" },
 
   ];
 
@@ -90,7 +90,7 @@ const skills = [
       <div className="w-full py-4 bg-white/[0.02] border-y border-white/5 overflow-hidden flex items-center">
         <motion.div animate={{ x: [0, -1000] }} transition={{ repeat: Infinity, duration: 40, ease: "linear" }} className="flex gap-12 items-center whitespace-nowrap px-4">
           {[...logoIds, ...logoIds].map((id, idx) => (
-            <img key={idx} src={`/logos/${id}.png`} alt="tech" className="h-6 grayscale opacity-30 hover:opacity-100 transition-all" />
+            <img key={idx} src={`/imama-portfolio-clean/public/logos/${id}.png`} alt="tech" className="h-6 grayscale opacity-30 hover:opacity-100 transition-all" />
           ))}
         </motion.div>
       </div>

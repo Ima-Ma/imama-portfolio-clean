@@ -53,7 +53,7 @@ function App() {
       {/* BACKGROUND IMAGE LAYER - Kept Fixed */}
       <div 
         className="fixed inset-0 z-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: "url('/main.jpg')" }}
+        style={{ backgroundImage: "url('/imama-portfolio-clean/public/main.jpg')" }}
       />
       
       {/* TRANSPARENT BLACK OVERLAY - Kept Fixed */}
