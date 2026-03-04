@@ -27,23 +27,10 @@ const Intro = () => {
   }, []);
 
   return (
-    // FIX: Changed justify-center to justify-start and added top padding/margin
-    // This moves the "Core Stack" box higher up the screen.
-    <motion.div className="relative flex flex-col items-center justify-start pt-20 md:pt-32 min-h-[60vh] md:h-[70vh] text-center overflow-hidden">
+    // ADJUSTED: Changed pt-16 to pt-8 and md:pt-28 to md:pt-12 to pull everything UP.
+    // min-h-[50vh] ensures the component doesn't push the page down too far.
+    <motion.div className="relative flex flex-col items-center justify-start pt-8 md:pt-12 min-h-[55vh] md:h-[65vh] text-center overflow-hidden">
       
-      {/* --- TOP LEFT BRANDING --- */}
-      <motion.div 
-        initial={{ opacity: 0, x: -20 }}
-        animate={{ opacity: 1, x: 0 }}
-        className="fixed top-4 left-4 md:top-6 md:left-6 z-50"
-      >
-        <img 
-          src="/logotransparent.png" 
-          alt="Logo" 
-          className="w-10 h-10 md:w-16 md:h-16 object-contain filter drop-shadow-[0_0_8px_rgba(34,211,238,0.4)]"
-        />
-      </motion.div>
-
       {/* FLOATING TECH STACK BACKGROUND */}
       <div className="absolute inset-0 pointer-events-none z-0 opacity-10 md:opacity-20">
         {keywords.map((word, i) => (
@@ -52,7 +39,7 @@ const Intro = () => {
             className="absolute font-mono text-[8px] md:text-xs font-bold text-cyan-400 whitespace-nowrap tracking-[0.2em] md:tracking-[0.4em]"
             style={{
               left: `${(i * 25) % 90}%`, 
-              top: `${(i * 15) % 70}%`, // Restricted to top 70% to avoid nav overlap
+              top: `${(i * 12) % 50}%`, // Restricted to top 50% so they stay behind the main logo/text
             }}
             animate={{ opacity: [0.1, 0.4, 0.1], y: [0, -15, 0] }}
             transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
@@ -63,7 +50,6 @@ const Intro = () => {
       </div>
 
       {/* Main Business Branding Container */}
-      {/* FIX: Added a negative margin top md:-mt-10 to lift it further if needed */}
       <div className="relative z-10 w-full max-w-4xl px-4">
         
         {/* --- ENHANCED RESPONSIVE SNAKE BORDER --- */}
@@ -83,19 +69,33 @@ const Intro = () => {
           />
         </svg>
 
-        <div className="relative flex flex-col items-center md:py-3">
-          <h1 className="text-4xl md:text-6xl lg:text-6xl font-black text-white tracking-tighter leading-tight">
-            CORE STACK
-            <span className="block text-xl md:text-3xl lg:text-4xl font-light tracking-[0.2em] md:tracking-[0.3em] text-cyan-400 mt-2">
-              TECHNOLOGIES
+        {/* ADJUSTED: Reduced py-10 to py-6/py-10 to keep the box more compact */}
+        <div className="relative flex flex-col items-center py-6 md:py-3">
+          
+          {/* Logo - Slightly smaller on mobile to save vertical space */}
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="mb-4 md:mb-2"
+          >
+            <img 
+              src="/logotransparent.png" 
+              alt="Logo" 
+              className="w-12 h-12 md:w-20 md:h-20 object-contain filter drop-shadow-[0_0_12px_rgba(34,211,238,0.6)]"
+            />
+          </motion.div>
+
+          <h1 className="text-3xl md:text-6xl lg:text-7xl font-black text-white tracking-tighter leading-tight uppercase">
+            Core Stack
+            <span className="block text-lg md:text-3xl lg:text-4xl font-light tracking-[0.2em] md:tracking-[0.3em] text-cyan-400 mt-1">
+              Technologies
             </span>
           </h1>
 
-          <div className="mt-6 md:mt-2">
+          <div className="mt-6 md:mt-3">
             <div className="flex items-center space-x-2 text-white/70 font-mono text-[10px] md:text-lg">
-              <span className="text-cyan-500/50">{"{"}</span>
-              <span ref={el} className="text-white"></span>
-              <span className="text-cyan-500/50">{"}"}</span>
+              <span className="text-cyan-500/40 font-bold">{"//"}</span>
+              <span ref={el} className="text-white tracking-wide"></span>
             </div>
           </div>
         </div>
