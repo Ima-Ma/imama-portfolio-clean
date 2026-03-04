@@ -27,22 +27,19 @@ const Intro = () => {
   }, []);
 
   return (
-    <motion.div className="relative flex flex-col items-center justify-start h-screen text-center pt-[25vh] md:pt-[15vh] overflow-hidden">
+    <motion.div className="relative flex flex-col items-center justify-center h-screen text-center overflow-hidden">
       
       {/* --- TOP LEFT BRANDING --- */}
       <motion.div 
         initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
-        className="fixed top-6 left-6 z-50 flex items-center gap-3"
+        className="fixed top-6 left-6 z-50"
       >
-        <div className="relative">
-           <img 
-            src="/logotransparent.png" 
-            alt="Logo" 
-            className="w-60 h-60 md:w-25 md:h-25 object-contain"
-          />
-        </div>
-       
+        <img 
+          src="/logotransparent.png" 
+          alt="Logo" 
+          className="w-12 h-12 md:w-16 md:h-16 object-contain filter drop-shadow-[0_0_8px_rgba(34,211,238,0.4)]"
+        />
       </motion.div>
 
       {/* FLOATING TECH STACK BACKGROUND */}
@@ -70,44 +67,67 @@ const Intro = () => {
         ))}
       </div>
 
-      {/* Main Business Branding */}
-      <div className="relative z-10 flex flex-col  px-4 mb-160">
+      {/* Main Business Branding Container */}
+      <div className="relative z-10 px-8 py-12 md:px-16 md:mb-60">
         
-        {/* Company Subtitle */}
-        {/* <motion.p 
-          initial={{ opacity: 0, tracking: "0.1em" }}
-          animate={{ opacity: 1, tracking: "0.5em" }}
-          className="text-cyan-500 font-mono text-xs md:text-sm mb-6 uppercase"
-        >
-          Engineering Foundational Digital Solutions
-        </motion.p> */}
+        {/* --- ENHANCED SNAKE BORDER --- */}
+        <svg className="absolute inset-0 w-full h-full pointer-events-none overflow-visible">
+          {/* Background Static Border */}
+          <rect
+            width="100%"
+            height="100%"
+            fill="none"
+            stroke="rgba(34, 211, 238, 0.05)"
+            strokeWidth="1"
+            rx="24"
+          />
+          {/* Outer Glow Path */}
+          <motion.rect
+            width="100%"
+            height="70%"
+            fill="none"
+            stroke="rgba(34, 211, 238, 0.4)"
+            strokeWidth="3"
+            strokeDasharray="100 400"
+            rx="24"
+            className="blur-[6px]"
+            animate={{ strokeDashoffset: [1000, 0] }}
+            transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+          />
+          {/* Main Sharp Path */}
+          <motion.rect
+            width="100%"
+            height="70%"
+            fill="none"
+            stroke="#22d3ee"
+            strokeWidth="1.5"
+            strokeDasharray="80 420"
+            rx="24"
+            animate={{ strokeDashoffset: [1000, 0] }}
+            transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+          />
+        </svg>
 
-        <div className="relative group">
-          <div className="absolute -inset-1 group-hover:opacity-50 transition duration-1000"></div>
-          
-          <div className="relative">
-            {/* Main Company Name */}
-            <h1 className="text-5xl md:text-8xl font-black text-white tracking-tighter">
-              CORE STACK
-              <span className="block text-2xl md:text-4xl font-light tracking-[0.3em] text-cyan-400 mt-2">
-                TECHNOLOGIES
-              </span>
-            </h1>
-          </div>
-        </div>
+        <div className="relative flex flex-col items-center">
+          <h1 className="text-5xl md:text-8xl font-black text-white tracking-tighter leading-none">
+            CORE STACK
+            <span className="block text-2xl md:text-4xl font-light tracking-[0.3em] text-cyan-400 mt-4">
+              TECHNOLOGIES
+            </span>
+          </h1>
 
-        {/* Dynamic Service Offering */}
-        <div className="mt-8 flex flex-col items-center">
-          <div className="flex items-center space-x-3 text-white/70 font-mono text-sm md:text-lg">
-            <span className="text-cyan-500">[</span>
-            <span ref={el}></span>
-            <span className="text-cyan-500">]</span>
+          <div className="mt-10 flex flex-col items-center">
+            <div className="flex items-center space-x-3 text-white/70 font-mono text-sm md:text-lg">
+              <span className="text-cyan-500/50">const services = [</span>
+              <span ref={el} className="text-white"></span>
+              <span className="text-cyan-500/50">];</span>
+            </div>
           </div>
         </div>
       </div>
 
       {/* Aesthetic Bottom Gradient */}
-      <div className="absolute bottom-0 w-full h-32 bg-gradient-to-t from-cyan-900/20 to-transparent pointer-events-none"></div>
+      <div className="absolute bottom-0 w-full h-32 bg-gradient-to-t from-cyan-950/40 to-transparent pointer-events-none"></div>
     </motion.div>
   );
 };
