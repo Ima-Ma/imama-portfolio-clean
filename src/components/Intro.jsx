@@ -6,46 +6,63 @@ const Intro = () => {
   const el = useRef(null);
   
   const keywords = useMemo(() => 
-    ["JAVASCRIPT", "NODE.JS", "TAILWIND", "PYTHON", "REDUX", "REST API", "AWS", "GIT", "DOCKER", "SQL", "REACT", "NEXT.JS", "TYPESCRIPT", "MONGODB"], 
+    ["SCALABLE", "CLOUD NATIVE", "FULL STACK", "API-DRIVEN", "REAL-TIME", "SECURE", "OPTIMIZED", "IOT READY", "ENTERPRISE", "MODERN UI"], 
   []);
 
   useEffect(() => {
     const typed = new Typed(el.current, {
-      strings: ["FULL STACK DEVELOPER", "REACT SPECIALIST", "UI ARCHITECT", "TECH INNOVATOR"],
-      typeSpeed: 50,
-      backSpeed: 30,
+      strings: [
+        "FULL-STACK DEVELOPMENT", 
+        "CLOUD ARCHITECTURE", 
+        "API INTEGRATION", 
+        "TECH CONSULTANCY", 
+        "MOBILE SOLUTIONS"
+      ],
+      typeSpeed: 40,
+      backSpeed: 20,
       loop: true,
-      cursorChar: "_",
+      cursorChar: "▊",
     });
     return () => typed.destroy();
   }, []);
 
   return (
-    /* Changed justify-center to justify-start and added padding-top to pull content up */
-    <motion.div className="relative flex flex-col items-center justify-start h-screen text-center pt-[30vh] md:pt-[10vh] ">
+    <motion.div className="relative flex flex-col items-center justify-start h-screen text-center pt-[25vh] md:pt-[15vh] overflow-hidden">
       
-      {/* FLOATING KEYWORDS - Top 30% only */}
-      <div className="absolute top-0 left-0 w-full h-[30%] pointer-events-none z-0">
+      {/* --- TOP LEFT BRANDING --- */}
+      <motion.div 
+        initial={{ opacity: 0, x: -20 }}
+        animate={{ opacity: 1, x: 0 }}
+        className="fixed top-6 left-6 z-50 flex items-center gap-3"
+      >
+        <div className="relative">
+           <img 
+            src="/logotransparent.png" 
+            alt="Logo" 
+            className="w-60 h-60 md:w-25 md:h-25 object-contain"
+          />
+        </div>
+       
+      </motion.div>
+
+      {/* FLOATING TECH STACK BACKGROUND */}
+      <div className="absolute top-0 left-0 w-full h-full pointer-events-none z-0 opacity-20">
         {keywords.map((word, i) => (
           <motion.span
             key={i}
-            className="absolute font-mono text-[10px] md:text-xs font-bold text-white/40 whitespace-nowrap tracking-[0.3em]"
+            className="absolute font-mono text-[9px] md:text-xs font-bold text-cyan-400 whitespace-nowrap tracking-[0.4em]"
             style={{
-              left: `${(i * 14) % 90}%`, 
-              top: `${(i * 8) % 100}%`,  
-              textShadow: "0 0 8px rgba(255, 255, 255, 0.2)"
+              left: `${(i * 18) % 95}%`, 
+              top: `${(i * 12) % 90}%`,  
             }}
-            initial={{ opacity: 0 }}
             animate={{ 
-              opacity: [0, 1, 1, 0],
-              y: [10, -10], 
-              scale: [0.95, 1, 0.95]
+              opacity: [0.1, 0.3, 0.1],
+              y: [0, -20, 0], 
             }}
             transition={{ 
-              duration: Math.random() * 5 + 5, 
+              duration: Math.random() * 7 + 5, 
               repeat: Infinity, 
-              ease: "easeInOut",
-              delay: i * 0.5
+              ease: "linear",
             }}
           >
             {word}
@@ -53,52 +70,44 @@ const Intro = () => {
         ))}
       </div>
 
-      {/* Main Content */}
-      <div className="relative z-10 flex flex-col items-center">
-        {/* Intro Label */}
-        <motion.p 
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="text-purple-400 font-mono tracking-[0.5em] text-xs md:text-sm mb-4"
+      {/* Main Business Branding */}
+      <div className="relative z-10 flex flex-col  px-4 mb-160">
+        
+        {/* Company Subtitle */}
+        {/* <motion.p 
+          initial={{ opacity: 0, tracking: "0.1em" }}
+          animate={{ opacity: 1, tracking: "0.5em" }}
+          className="text-cyan-500 font-mono text-xs md:text-sm mb-6 uppercase"
         >
-          HI, I AM
-        </motion.p>
+          Engineering Foundational Digital Solutions
+        </motion.p> */}
 
-        <div className="relative inline-block px-6 py-3 md:px-10 md:py-6">
-          {/* Animated Snake Border */}
-          <svg className="absolute inset-0 w-full h-full pointer-events-none">
-            <motion.rect
-              width="100%"
-              height="100%"
-              fill="none"
-              stroke="rgba(168, 85, 247, 0.3)"
-              strokeWidth="1.5"
-              strokeDasharray="60 180"
-              initial={{ strokeDashoffset: 1000 }}
-              animate={{ strokeDashoffset: 0 }}
-              transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
-            />
-          </svg>
-
-          {/* Main Name - Optimized Font Size */}
-          <h1 className="relative text-4xl md:text-7xl lg:text-8xl font-black bg-gradient-to-r from-purple-300 via-white to-indigo-300 bg-clip-text text-transparent tracking-tighter">
-            IMAMA MUSHTAQ
-          </h1>
+        <div className="relative group">
+          <div className="absolute -inset-1 group-hover:opacity-50 transition duration-1000"></div>
           
-          {/* Decorative Runner */}
-          <motion.div 
-            className="h-[1px] bg-gradient-to-r from-transparent via-purple-500/40 to-transparent mt-4"
-            initial={{ width: 0, x: "-5%" }}
-            animate={{ width: "110%", x: "-5%" }}
-            transition={{ duration: 1.5, delay: 0.5 }}
-          />
+          <div className="relative">
+            {/* Main Company Name */}
+            <h1 className="text-5xl md:text-8xl font-black text-white tracking-tighter">
+              CORE STACK
+              <span className="block text-2xl md:text-4xl font-light tracking-[0.3em] text-cyan-400 mt-2">
+                TECHNOLOGIES
+              </span>
+            </h1>
+          </div>
         </div>
 
-        {/* Typing Effect */}
-        <div className="mt-1 mb-5 font-mono text-base md:text-xl text-cyan-400/90 tracking-[0.2em] min-h-[30px]">
-          <span ref={el}></span>
+        {/* Dynamic Service Offering */}
+        <div className="mt-8 flex flex-col items-center">
+          <div className="flex items-center space-x-3 text-white/70 font-mono text-sm md:text-lg">
+            <span className="text-cyan-500">[</span>
+            <span ref={el}></span>
+            <span className="text-cyan-500">]</span>
+          </div>
         </div>
       </div>
+
+      {/* Aesthetic Bottom Gradient */}
+      <div className="absolute bottom-0 w-full h-32 bg-gradient-to-t from-cyan-900/20 to-transparent pointer-events-none"></div>
     </motion.div>
   );
 };
