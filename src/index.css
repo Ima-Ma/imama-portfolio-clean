@@ -4,6 +4,7 @@
 body {
   font-family: 'Orbitron', sans-serif;
   cursor: none; 
+    /* background-color: #040c23; */
 }
 
 @keyframes flow {
@@ -17,13 +18,38 @@ body {
 }
 
 
-body {
-  /* overflow: hidden; */
-  background-color: #040c23;
-}
 
 @keyframes scan {
   from { transform: translateY(-100%); }
   to { transform: translateY(200%); }
 }
 .animate-scan { animation: scan 3s linear infinite; }
+
+
+/* --- Universal Mini Scrollbar Styling --- */
+
+/* Targets the entire document and all scrollable elements */
+*::-webkit-scrollbar,
+html::-webkit-scrollbar {
+  width: 4px;
+  height: 4px; /* For horizontal scrollers */
+}
+
+*::-webkit-scrollbar-track,
+html::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 10px;
+}
+
+*::-webkit-scrollbar-thumb,
+html::-webkit-scrollbar-thumb {
+  background: rgba(34, 211, 238, 0.3); /* Your Brand Cyan */
+  border-radius: 10px;
+  transition: background 0.3s ease;
+}
+
+*::-webkit-scrollbar-thumb:hover,
+html::-webkit-scrollbar-thumb:hover {
+  background: rgba(34, 211, 238, 0.6); /* Brighter on hover */
+}
+

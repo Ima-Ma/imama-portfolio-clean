@@ -4,6 +4,7 @@ import Intro from "./components/Intro";
 import Resume from "./components/Resume";
 import Project from "./components/Project";
 import Contact from "./components/Contact";
+import Services from "./components/Services";
 
 const FloatingParticles = () => {
   const particles = useMemo(() => Array.from({ length: 20 }), []);
@@ -44,7 +45,7 @@ function App() {
     return () => window.removeEventListener("mousemove", mouseMove);
   }, []);
 
-  const tabs = ["Intro", "Resume", "Portfolio", "Contact"];
+  const tabs = ["Intro","Services", "About Owner", "Portfolio", "Contact"];
 
   return (
     /* Changed 'fixed inset-0' to 'relative min-h-screen' to allow natural scrolling */
@@ -84,7 +85,7 @@ function App() {
       {/* Futuristic Nav - Fixed so it stays visible while scrolling */}
       <motion.nav
         animate={{
-          top: activeTab === "intro" ? "70%" : "40px",
+          top: activeTab === "intro" ? "75%" : "40px",
           scale: activeTab === "intro" ? 1.1 : 0.9,
         }}
         transition={{ type: "spring", stiffness: 100, damping: 20 }}
@@ -134,9 +135,11 @@ function App() {
             className="w-full max-w-6xl px-4"
           >
             {activeTab === "intro" && <Intro />}
-            {activeTab === "resume" && <Resume />}
+            {activeTab === "about owner" && <Resume />}
             {activeTab === "portfolio" && <Project />}
             {activeTab === "contact" && <Contact />}
+            {activeTab === "services" && <Services />}
+
           </motion.div>
         </AnimatePresence>
       </main>

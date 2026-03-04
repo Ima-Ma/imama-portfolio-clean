@@ -40,7 +40,7 @@ const Resume = () => {
           <h1 className="text-xl font-black tracking-tighter text-cyan-400 mb-2 uppercase">Ima-Ma Mushtaq</h1>
           <div className="space-y-2 font-mono text-gray-400 text-[10px]">
             <div className="flex items-center gap-2"><Mail size={12} className="text-purple-400"/> imamamushtaq2006@gmail.com</div>
-            <div className="flex items-center gap-2"><Phone size={12} className="text-purple-400"/> 03112033680</div>
+            <div className="flex items-center gap-2"><Phone size={12} className="text-purple-400"/> +92 321 3735979</div>
             <div className="flex items-center gap-2"><MapPin size={12} className="text-purple-400"/> Karachi, Pakistan</div>
             <a href="https://github.com/Ima-Ma" target="_blank" className="flex items-center gap-2 hover:text-cyan-400 transition-colors">
               <Github size={12} className="text-purple-400"/> github.com/Ima-Ma
@@ -98,37 +98,55 @@ const Resume = () => {
         </motion.section>
       </div>
 
-      {/* --- MIDDLE COLUMN --- */}
-      <div className="flex flex-col gap-3 h-full overflow-hidden">
-        <motion.section variants={itemVariants} className="bg-white/5 border border-white/10 p-4 rounded-xl h-full flex flex-col min-h-0">
-          <div className="flex items-center gap-2 mb-4 border-b border-purple-500/30 pb-1">
-            <Briefcase size={16} className="text-purple-400" />
-            <h3 className="font-bold tracking-tighter uppercase text-[11px]">Experience</h3>
-          </div>
-          <div className="space-y-4 overflow-y-auto pr-1">
-            <div className="group bg-white/5 p-3 rounded-lg border border-white/5 hover:border-cyan-500/30 transition-all">
-              <span className="text-[9px] font-mono bg-purple-500/20 text-purple-300 px-1.5 py-0.5 rounded">2025 - 2026</span>
-              <h4 className="text-xs font-bold text-cyan-400 mt-1">Full Stack Developer</h4>
-              <p className="text-[10px] text-gray-300 mb-2">Dreams Network and Technology </p>
-              <ul className="text-[10px] text-gray-400 space-y-1 list-disc ml-3">
-                <li>Developed apps using .NET, React, Flutter, and MERN.</li>
-                <li>Managed SQL Server and Firebase.</li>
-                <li>Built IoT systems using MQTT and Web APIs.</li>
-              </ul>
-            </div>
-            <div className="group bg-white/5 p-3 rounded-lg border border-white/5 hover:border-cyan-500/30 transition-all">
-              <span className="text-[9px] font-mono bg-purple-500/20 text-purple-300 px-1.5 py-0.5 rounded">2021 - 2024</span>
-              <h4 className="text-xs font-bold text-cyan-400 mt-1">Freelance Developer</h4>
-              <p className="text-[10px] text-gray-300 mb-2">Local Clients</p>
-              <ul className="text-[10px] text-gray-400 space-y-1 list-disc ml-3">
-                <li>Delivered IoT solutions and admin panels.</li>
-                <li>Integrated Node.js with automated dashboards.</li>
-              </ul>
-            </div>
-          </div>
-        </motion.section>
+     {/* --- MIDDLE COLUMN --- */}
+<div className="flex flex-col gap-3 h-full overflow-hidden">
+  <motion.section variants={itemVariants} className="bg-white/5 border border-white/10 p-4 rounded-xl h-full flex flex-col min-h-0">
+    <div className="flex items-center gap-2 mb-4 border-b border-cyan-500/30 pb-1">
+      <Briefcase size={16} className="text-cyan-400" />
+      <h3 className="font-bold tracking-tighter uppercase text-[11px]">Experience</h3>
+    </div>
+    
+    <div className="space-y-4 overflow-y-auto pr-1">
+      {/* NEW: FOUNDER ROLE */}
+      <div className="group bg-cyan-500/5 p-3 rounded-lg border border-cyan-500/20 hover:border-cyan-400 transition-all">
+        <div className="flex justify-between items-start">
+          <span className="text-[9px] font-mono bg-cyan-500/20 text-cyan-300 px-1.5 py-0.5 rounded">2025 - PRESENT</span>
+          <div className="w-2 h-2 rounded-full bg-cyan-500 animate-pulse"></div>
+        </div>
+        <h4 className="text-xs font-bold text-white mt-1 uppercase tracking-wider">Founder & Owner</h4>
+        <p className="text-[10px] text-cyan-400 font-bold mb-2">Core Stack Technologies</p>
+        <ul className="text-[10px] text-gray-400 space-y-1 list-disc ml-3">
+          <li>Leading digital transformation for global clients.</li>
+          <li>Architecting scalable full-stack & cloud-native solutions.</li>
+          <li>Specializing in custom IoT and high-performance web systems.</li>
+        </ul>
       </div>
 
+      {/* DREAMS NETWORK */}
+      <div className="group bg-white/5 p-3 rounded-lg border border-white/5 hover:border-cyan-500/30 transition-all">
+        <span className="text-[9px] font-mono bg-white/10 text-gray-300 px-1.5 py-0.5 rounded">2025 - 2026</span>
+        <h4 className="text-xs font-bold text-cyan-400 mt-1">Full Stack Developer</h4>
+        <p className="text-[10px] text-gray-300 mb-2">Dreams Network and Technology</p>
+        <ul className="text-[10px] text-gray-400 space-y-1 list-disc ml-3">
+          <li>Developed apps using .NET, React, Flutter, and MERN.</li>
+          <li>Managed SQL Server and Firebase.</li>
+          <li>Built IoT systems using MQTT and Web APIs.</li>
+        </ul>
+      </div>
+
+      {/* FREELANCE */}
+      <div className="group bg-white/5 p-3 rounded-lg border border-white/5 hover:border-cyan-500/30 transition-all">
+        <span className="text-[9px] font-mono bg-white/10 text-gray-300 px-1.5 py-0.5 rounded">2021 - 2024</span>
+        <h4 className="text-xs font-bold text-cyan-400 mt-1">Freelance Developer</h4>
+        <p className="text-[10px] text-gray-300 mb-2">Local Clients</p>
+        <ul className="text-[10px] text-gray-400 space-y-1 list-disc ml-3">
+          <li>Delivered IoT solutions and admin panels.</li>
+          <li>Integrated Node.js with automated dashboards.</li>
+        </ul>
+      </div>
+    </div>
+  </motion.section>
+</div>
       {/* --- RIGHT COLUMN --- */}
       <div className="flex flex-col gap-3 h-full overflow-hidden">
         <motion.section variants={itemVariants} className="bg-white/5 border border-white/10 p-4 rounded-xl flex-1 flex flex-col min-h-0">
