@@ -6,33 +6,7 @@ import Project from "./components/Project";
 import Contact from "./components/Contact";
 import Services from "./components/Services";
 
-const FloatingParticles = () => {
-  const particles = useMemo(() => Array.from({ length: 20 }), []);
-  return (
-    <div className="fixed inset-0 pointer-events-none z-10">
-      {particles.map((_, i) => (
-        <motion.div
-          key={i}
-          className="absolute w-[1px] h-[100px] bg-gradient-to-b from-transparent via-purple-500/20 to-transparent"
-          initial={{ 
-            top: Math.random() * 100 + "%", 
-            left: Math.random() * 100 + "%",
-            opacity: 0 
-          }}
-          animate={{ 
-            y: [0, -200, 0],
-            opacity: [0, 0.5, 0]
-          }}
-          transition={{ 
-            duration: Math.random() * 10 + 10, 
-            repeat: Infinity, 
-            ease: "linear" 
-          }}
-        />
-      ))}
-    </div>
-  );
-};
+// ... (FloatingParticles stays the same)
 
 function App() {
   const [activeTab, setActiveTab] = useState("intro");
@@ -45,51 +19,42 @@ function App() {
     return () => window.removeEventListener("mousemove", mouseMove);
   }, []);
 
-  const tabs = ["Intro","Services", "About Owner", "Portfolio", "Contact"];
+  const tabs = ["Intro", "Services", "About Owner", "Portfolio", "Contact"];
 
   return (
-    /* Changed 'fixed inset-0' to 'relative min-h-screen' to allow natural scrolling */
-    <div className="relative min-h-screen text-white selection:bg-purple-500/30 overflow-x-hidden">
+    <div className="relative min-h-screen text-white selection:bg-cyan-500/30 overflow-x-hidden">
       
-      {/* BACKGROUND IMAGE LAYER - Kept Fixed */}
-      <div 
-        className="fixed inset-0 z-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: "url('/main.jpg')" }}
-      />
-      
-      {/* TRANSPARENT BLACK OVERLAY - Kept Fixed */}
-      <div className="fixed inset-0 z-[1] bg-black/60" />
-
-      {/* Background FX - Glows kept fixed so they don't scroll away */}
+      {/* BACKGROUND & FX (Stays fixed as requested) */}
+      <div className="fixed inset-0 z-0 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('/main.jpg')" }} />
+      <div className="fixed inset-0 z-[1] bg-black/80 md:bg-black/60" />
       <div className="fixed inset-0 z-10 pointer-events-none">
-        <FloatingParticles />
-        <div className="absolute w-[500px] h-[500px] bg-purple-900/10 rounded-full blur-[120px] -top-20 -left-20 animate-pulse" />
-        <div className="absolute w-[500px] h-[500px] bg-indigo-900/10 rounded-full blur-[120px] -bottom-20 -right-20 animate-pulse" />
+        <div className="absolute w-[300px] h-[300px] bg-cyan-900/20 rounded-full blur-[100px] -top-10 -left-10 animate-pulse" />
       </div>
 
-      {/* Cyber Cursor - Kept Fixed */}
+      {/* Cyber Cursor - Hidden on mobile for better UX */}
       <motion.div
-        className="fixed top-0 left-0 rounded-full border border-purple-500/50 pointer-events-none z-50 flex items-center justify-center"
+        className="hidden md:flex fixed top-0 left-0 rounded-full border border-cyan-500/50 pointer-events-none z-50 items-center justify-center"
         animate={{
           x: mousePosition.x - (isHovering ? 25 : 10),
           y: mousePosition.y - (isHovering ? 25 : 10),
           width: isHovering ? 50 : 20,
           height: isHovering ? 50 : 20,
-          backgroundColor: isHovering ? "rgba(168, 85, 247, 0.1)" : "rgba(168, 85, 247, 0)",
         }}
-        transition={{ type: "spring", damping: 20, stiffness: 250, mass: 0.5 }}
+        transition={{ type: "spring", damping: 20, stiffness: 250 }}
       >
-        <div className="w-1 h-1 bg-purple-400 rounded-full" />
+        <div className="w-1 h-1 bg-cyan-400 rounded-full" />
       </motion.div>
 
-      {/* Futuristic Nav - Fixed so it stays visible while scrolling */}
+      {/* Futuristic Nav - RESPONSIVE FIX */}
       <motion.nav
         animate={{
-          top: activeTab === "intro" ? "75%" : "40px",
-          scale: activeTab === "intro" ? 1.1 : 0.9,
+          // Mobile: Top fixed, Desktop: Dynamic movement
+          top: window.innerWidth < 768 ? "20px" : (activeTab === "intro" ? "75%" : "40px"),
+          scale: activeTab === "intro" ? 1.0 : 0.9,
         }}
         transition={{ type: "spring", stiffness: 100, damping: 20 }}
-        className="fixed left-1/2 -translate-x-1/2 z-40 flex gap-6 md:gap-12 font-mono"
+        // Added overflow-x-auto and max-w-full for mobile swiping
+        className="fixed left-0 md:left-1/2 md:-translate-x-1/2 z-40 w-full md:w-auto flex overflow-x-auto no-scrollbar md:overflow-visible gap-4 md:gap-12 px-6 md:px-0 py-4 font-mono items-center justify-start md:justify-center"
       >
         {tabs.map((tab) => {
           const lower = tab.toLowerCase();
@@ -100,22 +65,22 @@ function App() {
               key={tab}
               onClick={() => {
                 setActiveTab(lower);
-                window.scrollTo({ top: 0, behavior: 'smooth' }); // Reset scroll on tab change
+                window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
               onMouseEnter={() => setIsHovering(true)}
               onMouseLeave={() => setIsHovering(false)}
-              className={`relative px-2 py-1 transition-colors duration-500 ${
-                isActive ? "text-purple-400" : "text-gray-300 hover:text-white"
+              className={`relative whitespace-nowrap transition-colors duration-500 flex-shrink-0 ${
+                isActive ? "text-cyan-400" : "text-gray-400 hover:text-white"
               }`}
             >
-              <span className="text-[10px] opacity-50 block text-center mb-1">
+              <span className="text-[8px] opacity-50 block text-center mb-0.5 md:mb-1">
                 {isActive ? "ACTIVE" : "0" + (tabs.indexOf(tab) + 1)}
               </span>
-              <span className="tracking-[0.2em] md:tracking-[0.3em] uppercase text-xs md:text-sm">{tab}</span>
+              <span className="tracking-[0.15em] md:tracking-[0.3em] uppercase text-[10px] md:text-sm font-bold">{tab}</span>
               {isActive && (
                 <motion.div 
                   layoutId="underline" 
-                  className="absolute -bottom-2 left-0 w-full h-[1px] bg-purple-500" 
+                  className="absolute -bottom-1 left-0 w-full h-[2px] bg-cyan-500 shadow-[0_0_8px_#22d3ee]" 
                 />
               )}
             </button>
@@ -123,23 +88,22 @@ function App() {
         })}
       </motion.nav>
 
-      {/* Main Container - Changed h-full to min-h-screen and removed flex-center to allow content to flow */}
-      <main className="relative z-20 w-full min-h-screen pt-32 pb-20 flex flex-col items-center">
+      {/* Main Content Area */}
+      <main className="relative z-20 w-full pt-24 md:pt-32 pb-20 flex flex-col items-center px-4">
         <AnimatePresence mode="wait">
           <motion.div
             key={activeTab}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.4 }}
-            className="w-full max-w-6xl px-4"
+            initial={{ opacity: 0, scale: 0.98 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 1.02 }}
+            transition={{ duration: 0.3 }}
+            className="w-full max-w-6xl"
           >
             {activeTab === "intro" && <Intro />}
             {activeTab === "about owner" && <Resume />}
             {activeTab === "portfolio" && <Project />}
             {activeTab === "contact" && <Contact />}
             {activeTab === "services" && <Services />}
-
           </motion.div>
         </AnimatePresence>
       </main>

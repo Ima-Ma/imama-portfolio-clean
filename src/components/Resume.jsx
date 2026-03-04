@@ -31,66 +31,46 @@ const Resume = () => {
       variants={containerVariants}
       initial="hidden"
       animate="visible"
-      // mt-60 preserved. h-[calc(100vh-15rem)] ensures "One View" by subtracting the margin from the total height.
-      className="w-full h-[calc(80vh-2rem)]  overflow-hidden grid grid-cols-1 lg:grid-cols-3 gap-3 p-4 text-white font-sans text-xs"
+      // FIX: Changed h-screen logic. Mobile is auto-height with scrolling, Desktop is fixed-height.
+      className="w-full min-h-screen lg:h-[calc(90vh-2rem)] overflow-y-auto lg:overflow-hidden grid grid-cols-1 lg:grid-cols-3 gap-4 p-4 md:p-6 text-white font-sans"
     >
-      {/* --- LEFT COLUMN --- */}
-      <div className="flex flex-col gap-3 h-full overflow-hidden">
-        <motion.div variants={itemVariants} className="bg-white/5 border border-white/10 p-4 rounded-xl">
-          <h1 className="text-xl font-black tracking-tighter text-cyan-400 mb-2 uppercase">Ima-Ma Mushtaq</h1>
-          <div className="space-y-2 font-mono text-gray-400 text-[10px]">
-            <div className="flex items-center gap-2"><Mail size={12} className="text-purple-400"/> imamamushtaq2006@gmail.com</div>
-            <div className="flex items-center gap-2"><Phone size={12} className="text-purple-400"/> +92 321 3735979</div>
-            <div className="flex items-center gap-2"><MapPin size={12} className="text-purple-400"/> Karachi, Pakistan</div>
-            <a href="https://github.com/Ima-Ma" target="_blank" className="flex items-center gap-2 hover:text-cyan-400 transition-colors">
-              <Github size={12} className="text-purple-400"/> github.com/Ima-Ma
+      {/* --- LEFT COLUMN: PROFILE & SKILLS --- */}
+      <div className="flex flex-col gap-4 h-full">
+        {/* Name & Contact Card */}
+        <motion.div variants={itemVariants} className="bg-white/5 border border-white/10 p-5 rounded-2xl backdrop-blur-sm">
+          <h1 className="text-2xl font-black tracking-tighter text-cyan-400 mb-3 uppercase">Ima-Ma Mushtaq</h1>
+          <div className="space-y-2.5 font-mono text-gray-400 text-[11px] md:text-[10px]">
+            <div className="flex items-center gap-3"><Mail size={14} className="text-cyan-500"/> imamamushtaq2006@gmail.com</div>
+            <div className="flex items-center gap-3"><Phone size={14} className="text-cyan-500"/> +92 321 3735979</div>
+            <div className="flex items-center gap-3"><MapPin size={14} className="text-cyan-500"/> Karachi, Pakistan</div>
+            <a href="https://github.com/Ima-Ma" target="_blank" className="flex items-center gap-3 hover:text-cyan-400 transition-colors">
+              <Github size={14} className="text-cyan-500"/> github.com/Ima-Ma
             </a>
           </div>
         </motion.div>
 
-        <motion.section variants={itemVariants} className="bg-white/5 border border-white/10 p-4 rounded-xl flex-1 flex flex-col min-h-0">
-          <div className="flex items-center gap-2 mb-4 border-b border-purple-500/30 pb-1">
-            <User size={16} className="text-purple-400" />
-            <h3 className="font-bold tracking-tighter uppercase text-[11px]">Soft Skills</h3>
+        {/* Skills Section */}
+        <motion.section variants={itemVariants} className="bg-white/5 border border-white/10 p-5 rounded-2xl flex-1 flex flex-col min-h-0 backdrop-blur-sm">
+          <div className="flex items-center gap-2 mb-4 border-b border-cyan-500/20 pb-2">
+            <User size={18} className="text-cyan-400" />
+            <h3 className="font-bold tracking-widest uppercase text-xs">Soft Skills</h3>
           </div>
-          <div className="flex flex-wrap gap-1.5 overflow-y-auto pr-1">
-            {[ "Teamwork", "Adaptability", "Time Management", "Critical Thinking"].map((skill) => (
-              <span key={skill} className="px-2 py-0.5 bg-white/5 border border-white/10 rounded-full text-[9px] text-gray-300">
+          <div className="flex flex-wrap gap-2 mb-6">
+            {["Teamwork", "Adaptability", "Time Management", "Critical Thinking"].map((skill) => (
+              <span key={skill} className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] text-gray-300">
                 {skill}
               </span>
             ))}
           </div>
-          <div className="flex items-center gap-2 mb-4 mt-6 border-b border-purple-500/30 pb-1">
-            <Cpu size={16} className="text-purple-400" />
-            <h3 className="font-bold tracking-tighter uppercase text-[11px]">Technical Stack</h3>
+
+          <div className="flex items-center gap-2 mb-4 border-b border-cyan-500/20 pb-2">
+            <Cpu size={18} className="text-cyan-400" />
+            <h3 className="font-bold tracking-widest uppercase text-xs">Technical Stack</h3>
           </div>
-          <div className="flex flex-wrap gap-1.5">
-            {[
-  "React",
-  "Node.js",
-  ".NET",
-  "Flutter",
-  "MERN",
-  "SQL",
-  "MySQL",
-  "MQTT",
-  "Firebase",
-  "HTML",
-  "CSS",
-  "JavaScript",
-  "TypeScript",
-  "Next.js",
-  "PHP",
-  "Laravel",
-  "IIS",
-  "Bootstrap",
-  "Chart.js",
-  "Entity Framework",
-  "REST API",
-  "Git",
-  "GitHub"
-].map((tech) => (
-              <span key={tech} className="px-2 py-0.5 bg-cyan-500/10 border border-cyan-500/20 rounded text-[9px] text-cyan-300 font-mono">
+          {/* Scrollable tech tags on desktop, normal flow on mobile */}
+          <div className="flex flex-wrap gap-2 overflow-y-auto lg:max-h-[300px] custom-scroll pr-1">
+            {["React", "Node.js", ".NET", "Flutter", "MERN", "SQL", "MySQL", "MQTT", "Firebase", "Next.js", "PHP", "Laravel", "Tailwind", "REST API", "Git"].map((tech) => (
+              <span key={tech} className="px-2 py-1 bg-cyan-500/10 border border-cyan-500/20 rounded text-[10px] text-cyan-300 font-mono">
                 {tech}
               </span>
             ))}
@@ -98,82 +78,72 @@ const Resume = () => {
         </motion.section>
       </div>
 
-     {/* --- MIDDLE COLUMN --- */}
-<div className="flex flex-col gap-3 h-full overflow-hidden">
-  <motion.section variants={itemVariants} className="bg-white/5 border border-white/10 p-4 rounded-xl h-full flex flex-col min-h-0">
-    <div className="flex items-center gap-2 mb-4 border-b border-cyan-500/30 pb-1">
-      <Briefcase size={16} className="text-cyan-400" />
-      <h3 className="font-bold tracking-tighter uppercase text-[11px]">Experience</h3>
-    </div>
-    
-    <div className="space-y-4 overflow-y-auto pr-1">
-      {/* NEW: FOUNDER ROLE */}
-      <div className="group bg-cyan-500/5 p-3 rounded-lg border border-cyan-500/20 hover:border-cyan-400 transition-all">
-        <div className="flex justify-between items-start">
-          <span className="text-[9px] font-mono bg-cyan-500/20 text-cyan-300 px-1.5 py-0.5 rounded">2025 - PRESENT</span>
-          <div className="w-2 h-2 rounded-full bg-cyan-500 animate-pulse"></div>
-        </div>
-        <h4 className="text-xs font-bold text-white mt-1 uppercase tracking-wider">Founder & Owner</h4>
-        <p className="text-[10px] text-cyan-400 font-bold mb-2">Core Stack Technologies</p>
-        <ul className="text-[10px] text-gray-400 space-y-1 list-disc ml-3">
-          <li>Leading digital transformation for global clients.</li>
-          <li>Architecting scalable full-stack & cloud-native solutions.</li>
-          <li>Specializing in custom IoT and high-performance web systems.</li>
-        </ul>
-      </div>
-
-      {/* DREAMS NETWORK */}
-      <div className="group bg-white/5 p-3 rounded-lg border border-white/5 hover:border-cyan-500/30 transition-all">
-        <span className="text-[9px] font-mono bg-white/10 text-gray-300 px-1.5 py-0.5 rounded">2025 - 2026</span>
-        <h4 className="text-xs font-bold text-cyan-400 mt-1">Full Stack Developer</h4>
-        <p className="text-[10px] text-gray-300 mb-2">Dreams Network and Technology</p>
-        <ul className="text-[10px] text-gray-400 space-y-1 list-disc ml-3">
-          <li>Developed apps using .NET, React, Flutter, and MERN.</li>
-          <li>Managed SQL Server and Firebase.</li>
-          <li>Built IoT systems using MQTT and Web APIs.</li>
-        </ul>
-      </div>
-
-      {/* FREELANCE */}
-      <div className="group bg-white/5 p-3 rounded-lg border border-white/5 hover:border-cyan-500/30 transition-all">
-        <span className="text-[9px] font-mono bg-white/10 text-gray-300 px-1.5 py-0.5 rounded">2021 - 2024</span>
-        <h4 className="text-xs font-bold text-cyan-400 mt-1">Freelance Developer</h4>
-        <p className="text-[10px] text-gray-300 mb-2">Local Clients</p>
-        <ul className="text-[10px] text-gray-400 space-y-1 list-disc ml-3">
-          <li>Delivered IoT solutions and admin panels.</li>
-          <li>Integrated Node.js with automated dashboards.</li>
-        </ul>
-      </div>
-    </div>
-  </motion.section>
-</div>
-      {/* --- RIGHT COLUMN --- */}
-      <div className="flex flex-col gap-3 h-full overflow-hidden">
-        <motion.section variants={itemVariants} className="bg-white/5 border border-white/10 p-4 rounded-xl flex-1 flex flex-col min-h-0">
-          <div className="flex items-center gap-2 mb-4 border-b border-purple-500/30 pb-1">
-            <GraduationCap size={16} className="text-purple-400" />
-            <h3 className="font-bold tracking-tighter uppercase text-[11px]">Education</h3>
+      {/* --- MIDDLE COLUMN: EXPERIENCE --- */}
+      <div className="flex flex-col gap-4 h-full">
+        <motion.section variants={itemVariants} className="bg-white/5 border border-white/10 p-5 rounded-2xl h-full flex flex-col min-h-0 backdrop-blur-sm">
+          <div className="flex items-center gap-2 mb-4 border-b border-cyan-500/20 pb-2">
+            <Briefcase size={18} className="text-cyan-400" />
+            <h3 className="font-bold tracking-widest uppercase text-xs">Experience</h3>
           </div>
-          <div className="space-y-4 overflow-y-auto pr-1">
+          
+          <div className="space-y-5 overflow-y-auto custom-scroll pr-1">
+            {/* FOUNDER ROLE */}
+            <div className="group bg-cyan-500/5 p-4 rounded-xl border border-cyan-500/20 hover:border-cyan-400 transition-all">
+              <div className="flex justify-between items-start">
+                <span className="text-[10px] font-mono bg-cyan-500/20 text-cyan-300 px-2 py-0.5 rounded">2025 - PRESENT</span>
+                <div className="w-2 h-2 rounded-full bg-cyan-500 animate-pulse"></div>
+              </div>
+              <h4 className="text-sm font-bold text-white mt-2 uppercase tracking-wider">Founder & Owner</h4>
+              <p className="text-[11px] text-cyan-400 font-bold mb-3">Core Stack Technologies</p>
+              <ul className="text-[11px] text-gray-400 space-y-1.5 list-disc ml-4 leading-relaxed">
+                <li>Leading digital transformation for global clients.</li>
+                <li>Architecting scalable full-stack & cloud-native solutions.</li>
+                <li>Specializing in custom IoT and real-time systems.</li>
+              </ul>
+            </div>
+
+            {/* DREAMS NETWORK */}
+            <div className="group bg-white/5 p-4 rounded-xl border border-white/5 hover:border-cyan-500/30 transition-all">
+              <span className="text-[10px] font-mono bg-white/10 text-gray-300 px-2 py-0.5 rounded">2025 - 2026</span>
+              <h4 className="text-sm font-bold text-cyan-400 mt-2 uppercase tracking-wider">Full Stack Developer</h4>
+              <p className="text-[11px] text-gray-300 mb-3">Dreams Network and Technology</p>
+              <ul className="text-[11px] text-gray-400 space-y-1.5 list-disc ml-4 leading-relaxed">
+                <li>Developed apps using .NET, React, and Flutter.</li>
+                <li>Managed SQL Server and Firebase ecosystems.</li>
+              </ul>
+            </div>
+          </div>
+        </motion.section>
+      </div>
+
+      {/* --- RIGHT COLUMN: EDUCATION & DOWNLOAD --- */}
+      <div className="flex flex-col gap-4 h-full">
+        <motion.section variants={itemVariants} className="bg-white/5 border border-white/10 p-5 rounded-2xl flex-1 flex flex-col min-h-0 backdrop-blur-sm">
+          <div className="flex items-center gap-2 mb-4 border-b border-cyan-500/20 pb-2">
+            <GraduationCap size={18} className="text-cyan-400" />
+            <h3 className="font-bold tracking-widest uppercase text-xs">Education</h3>
+          </div>
+          <div className="space-y-6 overflow-y-auto custom-scroll pr-1">
             {[
-              { title: "Bachelors in Computer Science", school: "Indus University", date: "2026 - Present" },
+              { title: "BS in Computer Science", school: "Indus University", date: "2026 - Present" },
               { title: "Diploma in Software Engineering", school: "Aptech Learning", date: "2022 - 2026" },
-              { title: "Intermediate in Computer Science", school: "Govt Degree SRE Majeed", date: "2023 - 2025" },
-              { title: "Matriculation in Computer Science", school: "Karachi Cambridge", date: "2023 - 2025" }
+              { title: "Intermediate (CS)", school: "Govt Degree SRE Majeed", date: "2023 - 2025" }
             ].map((edu, i) => (
-              <div key={i} className="relative pl-3 border-l-2 border-cyan-500/20">
-                <h4 className="text-[11px] font-bold">{edu.title}</h4>
-                <p className="text-gray-400 text-[10px]">{edu.school}</p>
-                <span className="text-[9px] text-purple-400 font-mono">{edu.date}</span>
+              <div key={i} className="relative pl-4 border-l-2 border-cyan-500/20 py-1">
+                <div className="absolute -left-[5px] top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-cyan-500/40"></div>
+                <h4 className="text-[12px] font-bold text-white">{edu.title}</h4>
+                <p className="text-gray-400 text-[11px]">{edu.school}</p>
+                <span className="text-[10px] text-cyan-500 font-mono mt-1 block tracking-wider">{edu.date}</span>
               </div>
             ))}
           </div>
         </motion.section>
 
-        <motion.div variants={itemVariants} className="bg-cyan-500/10 border border-cyan-500/20 p-4 rounded-xl">
-          <a href="/cv.pdf" target="_blank">
-            <button className="flex items-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-black font-black py-2.5 px-4 rounded-lg transition-all active:scale-95 w-full justify-center group text-[10px] tracking-widest uppercase">
-              <Download size={14} /> DOWNLOAD CV
+        {/* Download Section */}
+        <motion.div variants={itemVariants} className="bg-cyan-500/5 border border-cyan-500/20 p-5 rounded-2xl">
+          <a href="/cv.pdf" target="_blank" className="block">
+            <button className="flex items-center gap-3 bg-cyan-500 hover:bg-cyan-400 text-black font-black py-3.5 px-6 rounded-xl transition-all active:scale-95 w-full justify-center group text-[11px] tracking-[0.2em] uppercase">
+              <Download size={16} /> DOWNLOAD CV
             </button>
           </a>
         </motion.div>
