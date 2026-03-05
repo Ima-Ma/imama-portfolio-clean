@@ -38,9 +38,9 @@ const Resume = () => {
       <div className="flex flex-col gap-4 h-full">
         {/* Name & Contact Card */}
         <motion.div variants={itemVariants} className="bg-white/5 border border-white/10 p-5 rounded-2xl backdrop-blur-sm">
-          <h1 className="text-2xl font-black tracking-tighter text-cyan-400 mb-3 uppercase">Ima-Ma Mushtaq</h1>
+          <h1 className="text-2xl font-black tracking-tighter text-cyan-400 mb-3 uppercase">Ms. Imama Mushtaq</h1>
           <div className="space-y-2.5 font-mono text-gray-400 text-[11px] md:text-[10px]">
-            <div className="flex items-center gap-3"><Mail size={14} className="text-cyan-500"/> imamamushtaq2006@gmail.com</div>
+            <div className="flex items-center gap-3"><Mail size={14} className="text-cyan-500"/> corestack.technologies.pk@gmail.com</div>
             <div className="flex items-center gap-3"><Phone size={14} className="text-cyan-500"/> +92 321 3735979</div>
             <div className="flex items-center gap-3"><MapPin size={14} className="text-cyan-500"/> Karachi, Pakistan</div>
             <a href="https://github.com/Ima-Ma" target="_blank" className="flex items-center gap-3 hover:text-cyan-400 transition-colors">
